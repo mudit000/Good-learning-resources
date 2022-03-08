@@ -1,0 +1,39 @@
+
+All examples based on Istio bookinfo examples
+-----------------------
+istioctl proxy-config clusters istio-ingressgateway-89f4f4674-7zcdk.istio-system
+kubectl get vs -n mudit
+
+istioctl proxy-config clusters productpage-v1-6b746f74dc-95x5t.mudit
+istioctl proxy-config route productpage-v1-6b746f74dc-95x5t.mudit
+istioctl proxy-config listener productpage-v1-6b746f74dc-95x5t.mudit -->output pretty much like iptables
+istioctl proxy-config endpoint productpage-v1-6b746f74dc-95x5t.mudit
+
+istio ingress-gateway :
+kubectl describe pod istio-ingressgateway-89f4f4674-7zcdk -n istio-system
+kubectl logs -f istio-ingressgateway-89f4f4674-7zcdk -c istio-proxy -n istio-system
+
+
+istio istiod :
+kubectl logs -f istiod-ff4b9bd74-7b5wq -c discovery -n istio-system
+kubectl describe pod istiod-ff4b9bd74-7b5wq -n istio-system
+
+
+Pod,sidecar proxy,init
+kubectl describe pod productpage-v1-6b746f74dc-95x5t -n mudit
+
+Additional:
+Gateway services: kubectl get svc istio-ingressgateway -n istio-system
+
+
+
+Diff between Istio Ingress and K8s Ingress
+
+An ingress Gateway describes a load balancer operating at the edge of the mesh that receives incoming HTTP/TCP connections. It configures exposed ports, protocols, etc. but, unlike Kubernetes Ingress Resources, does not include any traffic routing configuration. Traffic routing for ingress traffic is instead configured using Istio routing rules, exactly in the same way as for internal service requests.
+
+
+
+
+
+kubectl exec details-v1-79f774bdb9-xxtmq -n mudit -c istio-proxy -- curl 'localhost:15000/stats' > stats
+kubectl exec details-v1-79f774bdb9-xxtmq -n mudit -c istio-proxy -- curl 'localhost:15000/clusters' > clusters_istio
