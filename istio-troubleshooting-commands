@@ -1,5 +1,49 @@
 
 All examples based on Istio bookinfo examples
+----Istio commands----------------
+
+
+CDS: Envoy Cluster Discovery Service. Envoy defines a “cluster” as a group of hosts that accept traffic for a given endpoint or service. Don’t confuse an Envoy cluster with a Kubernetes cluster - in a Kubernetes cluster, an Envoy “cluster” will typically, though not always, be a Kubernetes deployment or other replica set.
+
+LDS: Envoy Listener Discovery Service. Envoy defines a “listener” for each configured host:port endpoint. A Kubernetes cluster will typically have an Envoy listener for each target service port in an Envoy cluster.
+
+EDS: Envoy Endpoint Discovery Service. Envoy defines an “endpoint” as a member of an Envoy cluster, to which it can connect for a service. In a Kubernetes cluster, an Envoy endpoint would be a pod backing the destination service.
+
+RDS: Envoy Route Discovery Service. Envoy defines a “route” as the set of Envoy rules that match a service or virtual host to an Envoy “cluster.”
+
+ADS: helps copying configuration to pods(Expected behavior Istio's pilot should always inject the current configuration into any new pod starting up.)
+
+
+
+
+version and number of proxy
+-->istioctl version
+proxies:
+istioctl ps
+
+Proxy status:
+istioctl proxy-status istio-ingressgateway-89f4f4674-7zcdk.istio-system
+istioctl proxy-config route istio-ingressgateway-89f4f4674-7zcdk.istio-system
+
+kubectl describe pod istio-ingressgateway-89f4f4674-7zcdk -n istio-system
+kubectl logs -f istio-ingressgateway-89f4f4674-7zcdk -c istio-proxy -n istio-system
+
+
+
+istioctl proxy-status productpage-v1-6b746f74dc-95x5t.mudit
+
+
+Pod,sidecar proxy,init
+kubectl describe pod productpage-v1-6b746f74dc-95x5t -n mudit
+
+
+
+kubectl get vs -n mudit
+kubectl get gw -n mudit
+kubectl describe gw bookinfo-gateway -n mudit
+kubectl describe vs bookinfo -n mudit
+
+
 -----------------------
 istioctl proxy-config clusters istio-ingressgateway-89f4f4674-7zcdk.istio-system
 kubectl get vs -n mudit
@@ -34,6 +78,8 @@ An ingress Gateway describes a load balancer operating at the edge of the mesh t
 
 
 
+with which profile we should deploy running,helm options
 
 kubectl exec details-v1-79f774bdb9-xxtmq -n mudit -c istio-proxy -- curl 'localhost:15000/stats' > stats
 kubectl exec details-v1-79f774bdb9-xxtmq -n mudit -c istio-proxy -- curl 'localhost:15000/clusters' > clusters_istio
+
