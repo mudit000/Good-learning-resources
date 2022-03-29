@@ -1,1 +1,4 @@
+POD Name --> Image Mapping
+-----------------------------
 
+kubectl get pods -n <namespace> -o jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}'
