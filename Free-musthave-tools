@@ -18,7 +18,10 @@ Capture a screenshot of your current full page without you needing to scroll it 
 link: https://chrome.google.com/webstore/detail/gofullpage-full-page-scre/fdpohaocaechififmbbbbbknoalclacl?hl=en
 
 5)mkcert
-
-
+If you want to test out applications that need a local CA (Certification authority), this is the right tool.
+link: https://github.com/FiloSottile/mkcert
 
 6)LICEcap
+LICEcap can capture an area of your desktop and save it directly to .GIF (for viewing in web browsers, etc).
+link:https://www.cockos.com/licecap/
+
