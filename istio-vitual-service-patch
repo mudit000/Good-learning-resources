@@ -1,0 +1,3 @@
+kubectl patch vs <virtualServiceName> -n <namespace> --type "json" -p '[
+{"op": "replace", "path": "/spec/http/0/route/0/weight", "value": '40'},
+{"op": "replace", "path": "/spec/http/0/route/1/weight", "value": '60'}]'
