@@ -1,3 +1,10 @@
+minikube common commands:
+-----------------------
+minikube start --memory=16384 --cpus=4 --kubernetes-version=v1.20.2
+minikube status
+minikube profile list
+
+
 minikube cluster on same shared network docker bridge:
 --------------------------------------------------------
 Running two mk clusters on same host with share docker bridge
