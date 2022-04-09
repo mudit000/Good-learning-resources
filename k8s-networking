@@ -1,3 +1,4 @@
 https://wiki.archlinux.org/title/Ipset
 https://k8s.networkop.co.uk/services/clusterip/dataplane/ipvs/
 http://kb.linuxvirtualserver.org/wiki/Ipvsadm
+https://github.com/kubernetes/enhancements/tree/0e4d5df19d396511fe41ed0860b0ab9b96f46a2d/keps/sig-network/265-ipvs-based-load-balancing
