@@ -1,0 +1,10 @@
+minikube cluster on same shared network docker bridge:
+--------------------------------------------------------
+Running two mk clusters on same host with share docker bridge
+This minikube binary has this feature:
+wget https://storage.googleapis.com/minikube-builds/13050/minikube-darwin-amd64
+This is the PR: https://github.com/kubernetes/minikube/pull/13050/
+
+
+./minikube-darwin-amd64 -p cluster-a start --network-plugin=cni --static-ip=false --extra-config=kubeadm.pod-network-cidr=10.200.0.0/16 --service-cluster-ip-range=10.201.0.0/16 --network=sharedlayer2
+./minikube-darwin-amd64 -p cluster-b start --network-plugin=cni --static-ip=false --extra-config=kubeadm.pod-network-cidr=10.210.0.0/16 --service-cluster-ip-range=10.211.0.0/16 --network=sharedlayer2
