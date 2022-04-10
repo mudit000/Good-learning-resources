@@ -1,0 +1,18 @@
+Download multipass:
+-----------------------
+https://multipass.run
+
+Launch default ubuntu VM
+----------------------------
+multipass launch -n test1
+
+Check Info of test machines
+-----------------------------
+multipass info test1
+
+login to test machine
+----------------------
+multipass shell test1
+
+
+
